@@ -1,0 +1,8 @@
+<h1>Review for <%= @bar[:bar_name] %></h1>
+<form action="/bars/<%= @bar[:id] %>/reviews/create">
+  <div class="form-group">
+    <label>What did you think?</label>
+    <textarea class="form-control" rows="3" name="comments"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

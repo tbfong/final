@@ -13,6 +13,30 @@ use Rack::Session::Cookie, key: 'rack.session', path: '/', secret: 'secret'     
 before { puts; puts "--------------- NEW REQUEST ---------------"; puts }             #
 after { puts; }                                                                       #
 #######################################################################################
+bars_table = DB.from(:bars)
+reviews_table = DB.from(:reviews)
 
-events_table = DB.from(:events)
-rsvps_table = DB.from(:rsvps)
+get "/" do
+    puts bars_table.all 
+    @bars = bars_table.all.to_a
+    view "bars"
+end
+
+get "/bars/:id" do
+    @bar = bars_table.where(id: params[:id]).to_a[0]
+    @review = reviews_table.where(bar_id: @bar[:id])
+    #@users_table = users_table
+    view "bar"
+end
+get "/bars/:id/reviews/new" do
+    @bar = bars_table.where(id: params[:id]).to_a[0]
+    view "new_review"
+end
+get "/bars/:id/reviews/create" do
+    puts params
+    @bar = bars_table.where(id: params["id"]).to_a[0]
+    reviews_table.insert(bar_id: params["id"],
+#                       user_id: session["user_id"],
+                       comments: params["comments"])
+    view "create_review"
+end

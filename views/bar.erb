@@ -1,0 +1,8 @@
+<div class="row">
+    <div class="col-sm-9">
+        <h1><%= @bar[:bar_name] %></h1>
+        <p><%= @bar[:description] %></p>
+        <p><%= @bar[:location] %></p>
+    </div>
+</div>
+            <a href="/bars/<%= @bar[:id] %>/reviews/new" class="btn btn-primary">Submit a review!</a>
