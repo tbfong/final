@@ -26,7 +26,7 @@ DB.create_table! :users do
 end
 # Insert initial (seed) data
 bars_table = DB.from(:bars)
-bars_table.insert(bar_name: "California Clipeer", 
+bars_table.insert(bar_name: "California Clipper", 
                     description: "Circa-1937 bar with a revamped yet still retro space & a huge list of old-fashioned cocktails.",
                     location: "Chicago, IL")
 bars_table.insert(bar_name: "Death & Co.", 
