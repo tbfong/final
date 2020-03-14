@@ -24,6 +24,7 @@ DB.create_table! :users do
   String :email
   String :password
 end
+
 # Insert initial (seed) data
 bars_table = DB.from(:bars)
 bars_table.insert(bar_name: "California Clipper", 
