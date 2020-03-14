@@ -1,6 +1,7 @@
 # Set up for the application and database. DO NOT CHANGE. #############################
 require "sinatra"                                                                     #
-require "sinatra/reloader" if development?                                            #
+require "sinatra/reloader" if development?
+require "geocoder"                                                                    #
 require "sequel"                                                                      #
 require "logger"                                                                      #
 require "twilio-ruby"                                                                 #
@@ -18,6 +19,7 @@ bars_table = DB.from(:bars)
 reviews_table = DB.from(:reviews)
 users_table = DB.from(:users)
 
+
 before do
     @current_user = users_table.where(id: session["user_id"]).to_a[0]
 end
@@ -32,6 +34,10 @@ get "/bars/:id" do
     @bar = bars_table.where(id: params[:id]).to_a[0]
     @review = reviews_table.where(bar_id: @bar[:id])
     @users_table = users_table
+       results = Geocoder.search(@bar[:location])
+    @lat_long = results.first.coordinates
+    @lat = @lat_long[0]
+    @long = @lat_long[1]
     view "bar"
 end
 
@@ -45,6 +51,7 @@ get "/bars/:id/reviews/create" do
     @bar = bars_table.where(id: params["id"]).to_a[0]
     reviews_table.insert(bar_id: params["id"],
                        user_id: session["user_id"],
+                       rating: params["rating"],
                        comments: params["comments"])
     view "create_review"
 end

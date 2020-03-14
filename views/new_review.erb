@@ -1,8 +1,18 @@
 <h1>Review for <%= @bar[:bar_name] %></h1>
 <form action="/bars/<%= @bar[:id] %>/reviews/create">
   <div class="form-group">
-    <label>What did you think?</label>
+    <label>How Was This Bar?</label>
     <textarea class="form-control" rows="3" name="comments"></textarea>
+
+    <label for="exampleFormControlSelect1">Rate your visit!</label>
+    <select class="form-control" name="rating">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+

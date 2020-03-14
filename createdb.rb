@@ -29,7 +29,7 @@ end
 bars_table = DB.from(:bars)
 bars_table.insert(bar_name: "California Clipper", 
                     description: "Circa-1937 bar with a revamped yet still retro space & a huge list of old-fashioned cocktails.",
-                    location: "Chicago, IL")
+                    location: "1002 N California Ave, Chicago, IL 60622")
 bars_table.insert(bar_name: "Death & Co.", 
                     description: "Bartenders in bow ties & suspenders recall the speakeasy era at this dark, moody cocktail lounge.",
-                    location: "New York, NY")
+                    location: "433 E 6th St, New York, NY 10009")

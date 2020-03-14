@@ -3,6 +3,24 @@
         <h1><%= @bar[:bar_name] %></h1>
         <p><%= @bar[:description] %></p>
         <p><%= @bar[:location] %></p>
+
+        <iframe
+        width="250"
+        height=""
+        frameborder="0" style="border:0"
+        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCtovsQvkIUWlNqtYwXY87gEd4ZSmJEhMw
+          &q=<%= @lat%>,<%= @long %>&zoom=14" allowfullscreen>
+      </iframe>
     </div>
 </div>
-            <a href="/bars/<%= @bar[:id] %>/reviews/new" class="btn btn-primary">Submit a review!</a>
+
+
+            <p class="mt-5">
+            <% if @current_user %>
+                <a href="/bars/<%= @bar[:id] %>/reviews/new" class="btn btn-primary">Review Now</a>
+            <% else %>
+                <a href="/logins/new" class="btn btn-danger">Please sign in to Leave a Review</a>
+            <% end %>
+        </p>
+
+
