@@ -4,16 +4,6 @@
         <p><%= @bar[:description] %></p>
         <p><%= @bar[:location] %></p>
 
-    <div class="col-md-9">
-    <h3> What Other Members Say</h3> 
-    <% for review in @review %> 
-    <p> User: <%= @users_table.where(id: review[:user_id]).to_a[0][:name] %></p>
-    <h5> Comments: </h5>  <%= review[:comments]%>
-    <p> Rating Out of 5: </p>
-    </p> <%= review[:rating]%> </p>
-    <% end %> 
-    </div> 
-
         <iframe
         width="500"
         height="600"
@@ -32,5 +22,13 @@
                 <a href="/logins/new" class="btn btn-secondary">Please sign in to Leave a Review</a>
             <% end %>
         </p>
-
+      
+    <div class="col-6">
+    <h2 class="mt-2"> What Other Members Say</h2> 
+    <% for review in @review %> 
+    <p> <strong> User: </strong> <%= @users_table.where(id: review[:user_id]).to_a[0][:name] %></p>
+    <p> Comments: </p>  <%= review[:comments]%> 
+    <% end %> 
+    </div> 
+    </div> 
 
