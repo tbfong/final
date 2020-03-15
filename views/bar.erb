@@ -19,7 +19,7 @@
             <% if @current_user %>
                 <a href="/bars/<%= @bar[:id] %>/reviews/new" class="btn btn-primary">Review Now</a>
             <% else %>
-                <a href="/logins/new" class="btn btn-danger">Please sign in to Leave a Review</a>
+                <a href="/logins/new" class="btn btn-secondary">Please sign in to Leave a Review</a>
             <% end %>
         </p>
 
